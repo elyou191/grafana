@@ -1,5 +1,12 @@
 #!/bin/bash
 
+
+
+# Grafana dashboard http://ip:3000, username: admin, password: admin
+
+
+
+
 cat <<EOF | sudo tee /etc/yum.repos.d/influxdb.repo
 [influxdb]
 name = InfluxDB Repository - RHEL \$releasever
@@ -20,7 +27,7 @@ sslverify=1
 sslcacert=/etc/pki/tls/certs/ca-bundle.crt
 EOF
 sudo yum update
-sudo dnf makecache
+sudo dnf -y makecache
 sudo dnf -y install influxdb telegraf grafana
 sudo firewall-cmd --add-port=8086/tcp --permanent
 sudo firewall-cmd --reload
